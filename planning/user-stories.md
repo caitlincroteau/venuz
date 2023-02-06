@@ -1,5 +1,4 @@
 ## User Stories
-
 ### Performance rentals
 
 - As a user I can view all rentable performance spaces on a map
@@ -23,3 +22,11 @@
   - Venue owner
   - Venue operator
   - General notes/considerations
+
+### User Nouns
+
+- User
+- Performance space
+- Rental space
+- Map
+
