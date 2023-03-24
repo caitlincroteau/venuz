@@ -1,17 +1,29 @@
 const mongoose = require("mongoose");
 
-//create schema
-const Schema = mongoose.Schema;
+//creates Schema
+const venueSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: [true, "Please enter a name."],
+    },
+    country: {
+      type: String,
+      required: [true, "Please enter a country."],
+    },
+    capacity: {
+      type: Number,
+      required: [true, "Please enter a number."],
+      default: 0,
+    },
+  },
+  {
+    timestamps: true,
+    //used to track created at and updated at times
+  }
+);
 
-const venueSchema = new Schema({
-  name: { type: String, required: true },
-  address: { type: String, required: true },
-  capacity: { type: String, required: true },
-  longitude: { type: String, required: true },
-  latitude: { type: String, required: true },
-});
-
-//create model
+//creates Model
 const Venue = mongoose.model("Venue", venueSchema);
 
-module.exports = Venue;
+module.exports = { Venue };
