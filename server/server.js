@@ -20,7 +20,7 @@ dotenv.config();
 
 //mongo database connection
 mongoose
-  .connect(process.env.MONGODB_URL, {
+  .connect(process.env.REACT_APP_MONGODB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

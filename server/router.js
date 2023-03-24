@@ -5,7 +5,7 @@ const {
   getVenue,
   updateVenue,
   deleteVenue,
-} = require("./controllers/venueController");
+} = require("../db/Controllers/venueController");
 
 router.get("/", (req, res) => {
   res.send("My router");
