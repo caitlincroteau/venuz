@@ -12,18 +12,18 @@ router.get("/", (req, res) => {
 });
 
 //CREATE add one
-router.post("/api/venue", createVenue);
+router.post("/venue", createVenue);
 
 //READ all
-router.get("/api/venues", getVenues);
+router.get("/venues", getVenues);
 
 //READ one
-router.get("/api/venues/:id", getVenue);
+router.get("/venues/:id", getVenue);
 
 //UPDATE one
-router.put("/api/venues/:id", updateVenue);
+router.put("/venues/:id", updateVenue);
 
 //DELETE one
-router.delete("/api/venues/:id", deleteVenue);
+router.delete("/venues/:id", deleteVenue);
 
 module.exports = { router };
