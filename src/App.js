@@ -16,7 +16,7 @@ function App() {
     backgroundColor: '#816bfe'
     }}>
       <h1>Welcome to Venuz!</h1>
-      <div><Test /></div>
+      <Test />
       {/* <Map /> */}
     </div>
   );
