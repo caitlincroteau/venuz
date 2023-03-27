@@ -2,7 +2,8 @@ import "./App.css";
 import logo from "./components/images/venuz-logo-star.png";
 import background from "./images/venuz_background.png";
 import Map from "./components/map";
-import Test from "./components/test";
+import Venue from "./components/venues";
+
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
     backgroundColor: '#816bfe'
     }}>
       <h1>Welcome to Venuz!</h1>
-      <Test />
+      <Venue />
       {/* <Map /> */}
     </div>
   );
