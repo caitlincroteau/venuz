@@ -19,6 +19,7 @@ const port = 3000;
 dotenv.config();
 
 //mongo database connection
+mongoose.set("strictQuery", true);
 mongoose
   .connect(process.env.REACT_APP_MONGODB_URL, {
     useNewUrlParser: true,
