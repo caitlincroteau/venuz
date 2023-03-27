@@ -1,36 +1,18 @@
-import { React, useEffect, useState } from "react";
-import axios from "axios";
+import Venue from "./Venue";
 
-export default function Test(props) {
-  //gives array of all the venue objects in db
-  const [venues, setVenues] = useState([]);
+export default function Venues(props) {
+  const venues = props.venues.map((venue) => {
+    return (
+      <Venue
+        key={venue.id}
+        name={venue.name}
+        country={venue.country}
+        capacity={venue.capacity}
+      />
+    );
+  });
 
-
-  useEffect(() => {
-    axios
-      .get("/api/venues/")
-      .then((response) => {
-        //sets the array of venues
-        setVenues(response.data)
-
-
-      })
-      .catch((error) => console.log(error));
-  }, []);
-
-  // const venue1Name = venues[0].name;
-
-
-  return (
-    <div>
-      <h1>Venue 1</h1>
-      {/* {venues[0].name} */}
-      {/* <div>{venue1Name}</div> */}
-      {venues.map((venue) => (
-        <div>{venue.name}</div>
-      ))}
-    </div>
-  );
+  return <ul>{venues}</ul>;
 }
 
 //look at helpers/usegardendata to deal with keys
