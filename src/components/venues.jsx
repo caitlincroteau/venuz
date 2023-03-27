@@ -18,17 +18,17 @@ export default function Test(props) {
       .catch((error) => console.log(error));
   }, []);
 
-  const venue1Name = venues[0].name;
+  // const venue1Name = venues[0].name;
 
 
   return (
     <div>
       <h1>Venue 1</h1>
       {/* {venues[0].name} */}
-      <div>{venue1Name}</div>
-      {/* {venues.map((venue) => (
+      {/* <div>{venue1Name}</div> */}
+      {venues.map((venue) => (
         <div>{venue.name}</div>
-      ))} */}
+      ))}
     </div>
   );
 }
