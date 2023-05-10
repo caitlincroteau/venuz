@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
 });
 
 //CREATE add one
-router.post("/api/venue", createVenue);
+router.post("/api/venues", createVenue);
 
 //READ all
 router.get("/api/venues", getVenues);
