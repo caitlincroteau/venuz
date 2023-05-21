@@ -6,18 +6,19 @@ export default function MapContainer(props) {
     zoom: 12,
   };
   return (
-    <div>
+    //always set the container height explicitly
+    <div style={{ height: "50vh", width: "50%" }}>
       <h1>this is a map</h1>
       <GoogleMapReact
         bootstrapURLKeys={{
-          key: process.env.GOOGLE_MAPS_API,
+          key: process.env.REACT_APP_GOOGLE_MAPS_API,
           language: "en",
         }}
-        defaultCenter={this.defaultProps.center}
-        center={this.defaultProps.center}
-        defaultZoom={this.defaultProps.zoom}
-        onChildMouseEnter={this.onChildMouseEnter}
-        onChildMouseLeave={this.onChildMouseLeave}
+        defaultCenter={defaultProps.center}
+        // center={this.defaultProps.center}
+        defaultZoom={defaultProps.zoom}
+        // onChildMouseEnter={this.onChildMouseEnter}
+        // onChildMouseLeave={this.onChildMouseLeave}
       />
     </div>
   );
