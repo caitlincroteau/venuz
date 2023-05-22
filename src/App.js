@@ -4,6 +4,7 @@ import background from "./images/venuz_background.png";
 import useData from "./components/useData";
 import Venues from "./components/Venues";
 import MapContainer from "./components/MapContainer";
+import Marker from "./components/Marker";
 
 function App() {
   const { venues, setVenues } = useData();
@@ -23,6 +24,7 @@ function App() {
     >
       <h1>Welcome to Venuz!</h1>
       <Venues venues={venues} />
+
       <MapContainer />
     </div>
   );
