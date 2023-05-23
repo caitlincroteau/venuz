@@ -7,6 +7,10 @@ export default function MapContainer(props) {}
 //https://github.com/google-map-react/google-map-react
 //https://levelup.gitconnected.com/google-map-react-beginners-guide-85bb1a94b04a
 
+//if I want to use this package, there is an issue with the markers moving, so
+//I would need to install this other package :/
+//https://github.com/giorgiabosello/google-maps-react-markers
+
 //google-map-react package
 // const [state, setState] = useState({
 //   center: { lat: 48.42460692730271, lng: -123.35338691883109 },
