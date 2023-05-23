@@ -1,8 +1,16 @@
-import GoogleMapReact from "google-map-react";
-import Marker from "./Marker";
-import { useEffect, useState } from "react";
 
-export default function MapContainer(props) {}
+
+export default function MapContainer(props) {
+  return <div>Map</div>
+}
+
+
+
+
+
+
+
+
 
 //https://github.com/google-map-react/google-map-react
 //https://levelup.gitconnected.com/google-map-react-beginners-guide-85bb1a94b04a
