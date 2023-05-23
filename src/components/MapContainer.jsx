@@ -1,5 +1,6 @@
-import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
-import '../globals.css';
+import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
+import { useMemo } from "react";
+import "../globals.css";
 
 export default function MapContainer(props) {
   const { isLoaded } = useLoadScript({
@@ -11,14 +12,23 @@ export default function MapContainer(props) {
 }
 
 function Map() {
+  const center = useMemo(
+    () => ({ lat: 48.42460692730271, lng: -123.35338691883109 }),
+    []
+  );
+
   return (
-    <GoogleMap
-      zoom={13}
-      center={{ lat: 48.42460692730271, lng: -123.35338691883109 }}
-      mapContainerClassName="map-container"
-    ></GoogleMap>
+    <GoogleMap zoom={13} center={center} mapContainerClassName="map-container">
+      <MarkerF
+        position={{ lat: 48.42460692730271, lng: -123.35338691883109 }}
+      />
+    </GoogleMap>
   );
 }
+
+//Leigh Halliday and google maps platform youtube channel, 'How to load Maps JavaScript API in React'
+// instructions for this componenet with @react-google-maps/api package:
+// https://www.youtube.com/watch?v=9e-5QHpadi0&list=PL2rFahu9sLJ2QuJaKKYDaJp0YqjFCDCtN&index=1&t=37s&ab_channel=GoogleMapsPlatform
 
 //https://github.com/google-map-react/google-map-react
 //https://levelup.gitconnected.com/google-map-react-beginners-guide-85bb1a94b04a
