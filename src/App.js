@@ -22,7 +22,7 @@ function App() {
       }}
     >
       <h1>Welcome to Venuz!</h1>
-      <Venues venues={venues} />
+      {/* <Venues venues={venues} /> */}
 
       <MapContainer />
     </div>

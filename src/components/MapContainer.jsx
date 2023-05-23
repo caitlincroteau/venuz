@@ -1,22 +1,24 @@
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import '../globals.css';
 
 export default function MapContainer(props) {
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API,
   });
 
-  if (!isLoaded) return <div>Loading ...</div>
-
-  return <div>Map</div>
+  if (!isLoaded) return <div>Loading ...</div>;
+  return <Map />;
 }
 
-
-
-
-
-
-
-
+function Map() {
+  return (
+    <GoogleMap
+      zoom={13}
+      center={{ lat: 48.42460692730271, lng: -123.35338691883109 }}
+      mapContainerClassName="map-container"
+    ></GoogleMap>
+  );
+}
 
 //https://github.com/google-map-react/google-map-react
 //https://levelup.gitconnected.com/google-map-react-beginners-guide-85bb1a94b04a
