@@ -4,7 +4,6 @@ import background from "./images/venuz_background.png";
 import useData from "./components/useData";
 import Venues from "./components/Venues";
 import MapContainer from "./components/MapContainer";
-import Marker from "./components/Marker";
 
 function App() {
   const { venues, setVenues } = useData();
