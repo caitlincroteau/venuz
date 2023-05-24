@@ -1,6 +1,7 @@
 import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
 import { useMemo } from "react";
 import "../globals.css";
+import { venues, setVenues } from "./useData";
 
 export default function MapContainer(props) {
   const { isLoaded } = useLoadScript({
@@ -19,9 +20,9 @@ function Map() {
 
   return (
     <GoogleMap zoom={13} center={center} mapContainerClassName="map-container">
-      <MarkerF
+      {/* <MarkerF
         position={{ lat: 48.42460692730271, lng: -123.35338691883109 }}
-      />
+      /> */}
     </GoogleMap>
   );
 }

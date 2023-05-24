@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { MarkerF } from "@react-google-maps/api";
 
 export default function useData() {
   //gives array of all the venue objects in db
@@ -15,5 +16,16 @@ export default function useData() {
       .catch((error) => console.log(error));
   }, []);
 
-  return { venues, setVenues };
+  const generateMarkers = () => {
+
+    return venues.map((venue) => {
+      return <MarkerF position={{ lat: venue.lat, lng: venue.lng }} />;
+    });
+  };
+
+  const markersList = generateMarkers();
+
+  return { venues, setVenues, markersList };
 }
+
+//venues is an array
