@@ -8,5 +8,3 @@ export default function MyMarker(props) {
     </div>
   );
 }
-
-//this is moving around! need to fix this issue
