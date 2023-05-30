@@ -7,15 +7,30 @@ const venueSchema = new mongoose.Schema(
       type: String,
       required: [true, "Please enter a name."],
     },
-    country: {
+    facility: {
       type: String,
-      required: [true, "Please enter a country."],
+      required: [true, "Please enter what kind of performance space this is."],
     },
     capacity: {
       type: Number,
       required: [true, "Please enter a number."],
       default: 0,
     },
+    lat: {
+      type: Number,
+      required: [true, "Please enter the latitude."],
+      default: 48.407326,
+    },
+    lng: {
+      type: Number,
+      required: [true, "Please enter the longitude."],
+      default: -123.329773,
+    },
+    company: {
+      type: String,
+      required: [false, "Please enter the resident company name."],
+      default: "No resident company."
+    }
   },
   {
     timestamps: true,
