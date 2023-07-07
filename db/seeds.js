@@ -1,4 +1,21 @@
-const venues = [
+const mongoose = require("mongoose");
+const { Venue } = require("./Model/venueModel");
+require("dotenv").config();
+
+mongoose.set("strictQuery", true);
+mongoose
+  .connect(process.env.REACT_APP_MONGODB_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("Connected to MongoDB");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+const seedVenues = [
   {
     name: "The Intrepid Studio",
     facility: "black-box",
@@ -81,3 +98,12 @@ const venues = [
     company: "The Fernwood Community Association and Theatre Inconnu",
   },
 ];
+
+const seedDB = async () => {
+  await Venue.deleteMany({});
+  await Venue.insertMany(seedVenues);
+};
+
+seedDB().then(() => {
+  mongoose.connection.close();
+});
