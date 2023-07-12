@@ -1,4 +1,4 @@
-import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
+import { GoogleMap, useLoadScript, MarkerF, InfoBox } from "@react-google-maps/api";
 import { useMemo } from "react";
 import "../globals.css";
 import useData from "./useData";
@@ -26,8 +26,14 @@ function Map() {
     () => ({ lat: 48.42460692730271, lng: -123.35338691883109 }),
     []
   );
+  
+  const onLoad = infoBox => {
+    console.log('infoBox: ', infoBox)
+  };
+  const options = { closeBoxURL: '', enableEventPropagation: true };
     
   return (
+    
     <GoogleMap zoom={13} center={center} mapContainerClassName="map-container">
       {markersList.map((marker, index) => (
         <MarkerF
@@ -35,8 +41,19 @@ function Map() {
         key={index}
         onClick={() => console.log(index)}
         icon={iconStar}
+        title={"This is a venue"}
       /> ))}
-    
+        {/* <InfoBox
+        position={center}
+        onLoad={onLoad}
+        options={options}
+        >
+          <div style={{ backgroundColor: 'yellow', opacity: 0.75, padding: 12 }}>
+        <div style={{ fontSize: 16, fontColor: `#08233B` }}>
+          Hello, World!
+        </div>
+      </div>
+        </InfoBox> */}
     </GoogleMap>
   );
 }
