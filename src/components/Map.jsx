@@ -4,7 +4,6 @@ import useData from "./useData";
 import iconStar from "./images/google-map-marker-40x40.png";
 import "../globals.css";
 
-
 export default function Map() {
   const [activeMarker, setActiveMarker] = useState();
   const { venues, setVenues, markersList } = useData();
@@ -13,7 +12,6 @@ export default function Map() {
     () => ({ lat: 48.42460692730271, lng: -123.35338691883109 }),
     []
   );
-  
 
   const onLoad = (infoBox) => {
     console.log("infoBox: ", infoBox);
@@ -44,3 +42,6 @@ export default function Map() {
     </GoogleMap>
   );
 }
+
+///watch this video for instructions!
+//https://www.youtube.com/watch?v=2po9_CIRW7I&t=556s&ab_channel=LeighHalliday
