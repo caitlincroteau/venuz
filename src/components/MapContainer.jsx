@@ -1,12 +1,15 @@
-import { GoogleMap, useLoadScript, MarkerF, InfoBox } from "@react-google-maps/api";
+import {
+  GoogleMap,
+  useLoadScript,
+  MarkerF,
+  InfoBox,
+} from "@react-google-maps/api";
 import { useMemo } from "react";
 import "../globals.css";
 import useData from "./useData";
 import iconStar from "./images/google-map-marker-40x40.png";
 
 export default function MapContainer(props) {
- 
-  
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API,
   });
@@ -16,52 +19,46 @@ export default function MapContainer(props) {
 }
 
 function Map() {
-  const {
-    venues,
-    setVenues, 
-    markersList,
-  } = useData();
+  const { venues, setVenues, markersList } = useData();
 
   const center = useMemo(
     () => ({ lat: 48.42460692730271, lng: -123.35338691883109 }),
     []
   );
-  
-  const onLoad = infoBox => {
-    console.log('infoBox: ', infoBox)
+
+  const onLoad = (infoBox) => {
+    console.log("infoBox: ", infoBox);
   };
-  const options = { closeBoxURL: '', enableEventPropagation: true };
-    
+  const options = { closeBoxURL: "", enableEventPropagation: true };
+
   return (
-    
     <GoogleMap zoom={13} center={center} mapContainerClassName="map-container">
       {markersList.map((marker, index) => (
         <MarkerF
-        position={{ lat: marker.props.position.lat, lng: marker.props.position.lng }}
-        key={index}
-        onClick={() => console.log(index)}
-        icon={iconStar}
-        title={"This is a venue"}
-      /> ))}
-        {/* <InfoBox
-        position={center}
-        onLoad={onLoad}
-        options={options}
-        >
-          <div style={{ backgroundColor: 'yellow', opacity: 0.75, padding: 12 }}>
-        <div style={{ fontSize: 16, fontColor: `#08233B` }}>
-          Hello, World!
+          position={{
+            lat: marker.props.position.lat,
+            lng: marker.props.position.lng,
+          }}
+          key={index}
+          onClick={() => console.log(index)}
+          icon={iconStar}
+          title={"This is a venue"}
+        />
+      ))}
+      {/* <InfoBox position={center} onLoad={onLoad} options={options}>
+        <div style={{ backgroundColor: "yellow", opacity: 0.75, padding: 12 }}>
+          <div style={{ fontSize: 16, fontColor: `#08233B` }}>
+            Hello, World!
+          </div>
         </div>
-      </div>
-        </InfoBox> */}
+      </InfoBox> */}
     </GoogleMap>
   );
 }
 
-  // <MarkerF
-  //       position={{ lat: 48.42460692730271, lng: -123.35338691883109 }}
-  //     /> 
-
+// <MarkerF
+//       position={{ lat: 48.42460692730271, lng: -123.35338691883109 }}
+//     />
 
 //Leigh Halliday and google maps platform youtube channel, 'How to load Maps JavaScript API in React'
 // instructions for this componenet with @react-google-maps/api package:
