@@ -2,6 +2,7 @@ import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
 import { useMemo } from "react";
 import "../globals.css";
 import useData from "./useData";
+import iconStar from "./images/google-map-marker-40x40.png";
 
 export default function MapContainer(props) {
  
@@ -33,6 +34,7 @@ function Map() {
         position={{ lat: marker.props.position.lat, lng: marker.props.position.lng }}
         key={index}
         onClick={() => console.log(index)}
+        icon={iconStar}
       /> ))}
     
     </GoogleMap>
