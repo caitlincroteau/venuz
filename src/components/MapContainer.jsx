@@ -25,17 +25,13 @@ function Map() {
     () => ({ lat: 48.42460692730271, lng: -123.35338691883109 }),
     []
   );
-
-  console.log(markersList)
-
-     
     
   return (
     <GoogleMap zoom={13} center={center} mapContainerClassName="map-container">
-      {markersList.map((marker, i) => (
+      {markersList.map((marker, index) => (
         <MarkerF
         position={{ lat: marker.props.position.lat, lng: marker.props.position.lng }}
-        key={marker.i}
+        key={index}
       /> ))}
     
     </GoogleMap>
