@@ -32,6 +32,7 @@ function Map() {
         <MarkerF
         position={{ lat: marker.props.position.lat, lng: marker.props.position.lng }}
         key={index}
+        onClick={() => console.log(index)}
       /> ))}
     
     </GoogleMap>
