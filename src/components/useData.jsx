@@ -18,7 +18,7 @@ export default function useData() {
 
   const generateMarkers = () => {
     return venues.map((venue) => {
-      return <MarkerF position={{ lat: venue.lat, lng: venue.lng }} />;
+      return <MarkerF title={venue.name} position={{ lat: venue.lat, lng: venue.lng }} />;
     });
   };
 
