@@ -36,6 +36,8 @@ export default function Map(props) {
 
   const handleClick = (marker) => {
     setActiveMarker(marker);
+    //centers map on clicked marker
+    mapRef.current?.panTo(marker.position)
     // handleInfoWindow();
   };
 
