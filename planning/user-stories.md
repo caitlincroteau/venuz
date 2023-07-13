@@ -23,6 +23,11 @@
   - Venue operator
   - General notes/considerations
 
+  - As a user I can hover over a marker to reveal an info box with venue name and capacity
+  - As a user I can click on a marker to reveal a responsive sidebar with details on the venue (see google maps). The map moves to always center the active marker in the map view (https://github.com/Turbo87/leaflet-sidebar)
+  - As a user I can close the sidebar
+
+
 ### User Nouns
 
 - User
