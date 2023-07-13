@@ -24,7 +24,18 @@ export default function Map(props) {
     }),
     []
   );
+
+  //can customize this later:
+  // const divStyle = {
+  //   background: `white`,
+  //   border: `1px solid #ccc`,
+  //   padding: 15,
+  // };
+
   const onLoad = useCallback((map) => (mapRef.current = map), []);
+  const infoOnLoad = (infoWindow) => {
+    console.log("infoWindow: ", infoWindow);
+  };
 
   useEffect(() => {
     console.log(activeMarker);
@@ -63,7 +74,7 @@ export default function Map(props) {
           );
         })}
         {infoWindowVisibility && (
-          <InfoWindowF position={activeMarker.position}>
+          <InfoWindowF position={activeMarker.position} onLoad={infoOnLoad}>
             <div>
               <h4>{activeMarker.title}</h4>
             </div>
