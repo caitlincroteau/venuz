@@ -8,11 +8,12 @@
   height: 100vh;
 }
 
-.controls {
+.sidebar {
   width: 20%;
   padding: 1rem;
   color: black;
   font-size: large;
+  background-color: lightblue;
 }
 
 .map-container {

@@ -1,6 +1,7 @@
 import { useLoadScript } from "@react-google-maps/api";
 
 import Map from "./Map";
+import Sidebar from "./Sidebar";
 import "../globals.css";
 
 export default function MapContainer(props) {
@@ -11,8 +12,8 @@ export default function MapContainer(props) {
   if (!isLoaded) return <div>Loading ...</div>;
   return (
     <div className="container">
-      <div className="controls">
-        <h1>Search</h1>
+      <div className="sidebar">
+        <Sidebar />
       </div>
       <div className="map">
         <Map />
