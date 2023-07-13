@@ -1,6 +1,7 @@
-import { useLoadScript} from "@react-google-maps/api";
+import { useLoadScript } from "@react-google-maps/api";
 
 import Map from "./Map";
+import "../globals.css";
 
 export default function MapContainer(props) {
   const { isLoaded } = useLoadScript({
@@ -8,10 +9,17 @@ export default function MapContainer(props) {
   });
 
   if (!isLoaded) return <div>Loading ...</div>;
-  return <Map />;
+  return (
+    <div className="container">
+      <div className="controls">
+        <h1>Search</h1>
+      </div>
+      <div className="map">
+        <Map />
+      </div>
+    </div>
+  );
 }
-
-
 
 // <MarkerF
 //       position={{ lat: 48.42460692730271, lng: -123.35338691883109 }}

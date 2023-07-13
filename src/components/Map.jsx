@@ -2,7 +2,7 @@ import { GoogleMap, MarkerF, InfoWindowF } from "@react-google-maps/api";
 import { useMemo, useState, useRef, useCallback, useEffect } from "react";
 import useData from "./useData";
 import iconStar from "./images/google-map-marker-40x40.png";
-import "../globals.css";
+
 
 export default function Map(props) {
   const [activeMarker, setActiveMarker] = useState({});
@@ -53,7 +53,6 @@ export default function Map(props) {
   };
 
   return (
-    <div>
       <GoogleMap
         zoom={13}
         center={center}
@@ -90,7 +89,6 @@ export default function Map(props) {
           //^this checks window visibility. if clicked on during handleClick function, this infoBox will appear
         )}
       </GoogleMap>
-    </div>
   );
 }
 
