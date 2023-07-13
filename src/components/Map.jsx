@@ -8,7 +8,6 @@ import { useMemo, useState, useRef, useCallback, useEffect } from "react";
 import useData from "./useData";
 import iconStar from "./images/google-map-marker-40x40.png";
 import "../globals.css";
-import { act } from "react-dom/test-utils";
 
 export default function Map(props) {
   const [activeMarker, setActiveMarker] = useState({});
@@ -31,18 +30,18 @@ export default function Map(props) {
   );
   const onLoad = useCallback((map) => (mapRef.current = map), []);
 
-  // const infoBoxOnLoad = (infoBox) => {
-  //   console.log("infoBox: ", infoBox);
-  // };
-  // //infobox options
-  // const infoBoxOptions = { closeBoxURL: "", enableEventPropagation: true };
   useEffect(() => {
     console.log(activeMarker);
   }, [activeMarker]);
 
   const handleClick = (marker) => {
     setActiveMarker(marker);
+    // handleInfoWindow();
   };
+
+  // const handleInfoWindow = () => {
+  //   setInfoWindow(!infoWindow);
+  // }
 
   return (
     <div>
@@ -53,13 +52,6 @@ export default function Map(props) {
         options={options}
         onLoad={onLoad}
       >
-        {/* <InfoBoxF
-          onLoad={infoBoxOnLoad}
-          options={infoBoxOptions}
-          visible={true}
-          position={activeMarker}>
-        </InfoBox> */}
-
         {markersList.map((marker, index) => {
           return (
             <MarkerF
@@ -68,25 +60,12 @@ export default function Map(props) {
                 lng: marker.props.position.lng,
               }}
               key={index}
-              // onClick={(position) => {
-              //   setActiveMarker(marker.props)
-              //   console.log(position)
-              // }}
-              //sets position and title for use in InfoBox
               onClick={() => {
                 handleClick(marker.props);
               }}
               icon={iconStar}
               title={marker.props.title}
-            >
-              {/* <InfoBoxF position={activeMarker.position} onLoad={onLoad} options={options} closeBoxURL={false}>
-               <div style={{ backgroundColor: "yellow", opacity: 0.75, padding: 12 }}>
-                  <div style={{ fontSize: 16, fontColor: `#08233B` }}>
-                    {activeMarker.title}
-                  </div>
-              </div>
-              </InfoBoxF>     */}
-            </MarkerF>
+            ></MarkerF>
           );
         })}
       </GoogleMap>
