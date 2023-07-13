@@ -1,9 +1,4 @@
-import {
-  GoogleMap,
-  MarkerF,
-  InfoBoxF,
-  InfoWindowF,
-} from "@react-google-maps/api";
+import { GoogleMap, MarkerF, InfoWindowF } from "@react-google-maps/api";
 import { useMemo, useState, useRef, useCallback, useEffect } from "react";
 import useData from "./useData";
 import iconStar from "./images/google-map-marker-40x40.png";
@@ -11,6 +6,7 @@ import "../globals.css";
 
 export default function Map(props) {
   const [activeMarker, setActiveMarker] = useState({});
+  const [infoWindowVisibility, setInfoWindowVisibility] = useState(false);
   const { venues, setVenues, markersList } = useData();
 
   const mapRef = useRef();
@@ -37,13 +33,9 @@ export default function Map(props) {
   const handleClick = (marker) => {
     setActiveMarker(marker);
     //centers map on clicked marker
-    mapRef.current?.panTo(marker.position)
-    // handleInfoWindow();
+    mapRef.current?.panTo(marker.position);
+    setInfoWindowVisibility(true);
   };
-
-  // const handleInfoWindow = () => {
-  //   setInfoWindow(!infoWindow);
-  // }
 
   return (
     <div>
@@ -70,6 +62,14 @@ export default function Map(props) {
             ></MarkerF>
           );
         })}
+        {infoWindowVisibility && (
+          <InfoWindowF position={activeMarker.position}>
+            <div>
+              <h4>{activeMarker.title}</h4>
+            </div>
+          </InfoWindowF>
+          //^this checks window visibility. if clicked on during handleClick function, this infoBox will appear
+        )}
       </GoogleMap>
     </div>
   );
@@ -86,3 +86,8 @@ export default function Map(props) {
 //     </div>
 
 // </InfoWindowF>
+
+//https://stackoverflow.com/questions/62369859/google-maps-infowindow-reactjs
+//^^ this gives infor on having only ONE infobox open at a time
+//big issue was that I was trying to render this inside the markerList map function which was causing ALL the venues infoboxes to appear and all with the activeMaker title
+//moving the infowindow OUTSIDE of this function solved the problem. woo!
