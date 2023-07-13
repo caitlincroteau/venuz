@@ -48,6 +48,10 @@ export default function Map(props) {
     setInfoWindowVisibility(true);
   };
 
+  const handleInfoClose = () => {
+    setInfoWindowVisibility(false);
+  };
+
   return (
     <div>
       <GoogleMap
@@ -74,7 +78,11 @@ export default function Map(props) {
           );
         })}
         {infoWindowVisibility && (
-          <InfoWindowF position={activeMarker.position} onLoad={infoOnLoad}>
+          <InfoWindowF
+            position={activeMarker.position}
+            onLoad={infoOnLoad}
+            onCloseClick={handleInfoClose}
+          >
             <div>
               <h4>{activeMarker.title}</h4>
             </div>
