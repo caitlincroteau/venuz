@@ -10,18 +10,10 @@ function App() {
 
   return (
     <div
-      className="App"
-      style={{
-        backgroundImage: `url(${background})`,
-        height: "100vh",
-        marginTop: "-70px",
-        fontSize: "50px",
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        backgroundColor: "#816bfe",
-      }}
+ 
     >
-      <h1>Welcome to Venuz!</h1>
+      {/* <h1>Welcome to Venuz!</h1> */}
+      {/* displays all venues at top of page */}
       {/* <Venues venues={venues} /> */}
 
       <MapContainer />
