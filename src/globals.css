@@ -13,7 +13,7 @@
   padding: 1rem;
   color: black;
   font-size: large;
-  background-color: lightblue;
+  background-color: lightblue
 }
 
 .map-container {
@@ -25,3 +25,15 @@
   width: 80%;
   height: 100vh;
 }
+
+/* //styles for app with navbar */
+/* // className="App"
+// style={{
+//   backgroundImage: `url(${background})`,
+//   height: "100vh",
+//   marginTop: "-70px",
+//   fontSize: "50px",
+//   backgroundSize: "cover",
+//   backgroundRepeat: "no-repeat",
+//   backgroundColor: "#816bfe",
+// }} */
