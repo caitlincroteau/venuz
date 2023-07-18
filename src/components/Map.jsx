@@ -1,11 +1,13 @@
 import { GoogleMap, MarkerF, InfoWindowF } from "@react-google-maps/api";
-import { useMemo, useState, useRef, useCallback, useEffect } from "react";
+import { useMemo, useState, useRef, useCallback, useEffect, useContext } from "react";
 import useData from "./useData";
 import iconStar from "./images/google-map-marker-40x40.png";
+import { AppContext } from "../Context";
 
 
 export default function Map(props) {
-  const [activeMarker, setActiveMarker] = useState({});
+  // const [activeMarker, setActiveMarker] = useState({});
+  const { activeMarker, setActiveMarker } = useContext(AppContext)
   const [infoWindowVisibility, setInfoWindowVisibility] = useState(false);
   const { venues, setVenues, markersList } = useData();
 
@@ -38,7 +40,7 @@ export default function Map(props) {
   };
 
   useEffect(() => {
-    console.log(activeMarker);
+    // console.log(activeMarker);
   }, [activeMarker]);
 
   const handleClick = (marker) => {
