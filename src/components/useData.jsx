@@ -5,6 +5,7 @@ import { MarkerF } from "@react-google-maps/api";
 export default function useData() {
   //gives array of all the venue objects in db
   const [venues, setVenues] = useState([]);
+  console.log(venues);
 
   useEffect(() => {
     axios
@@ -18,13 +19,31 @@ export default function useData() {
 
   const generateMarkers = () => {
     return venues.map((venue) => {
-      return <MarkerF title={venue.name} position={{ lat: venue.lat, lng: venue.lng }} />;
+      return (
+        <MarkerF
+          title={venue.name}
+          position={{ lat: venue.lat, lng: venue.lng }}
+        />
+      );
     });
   };
 
   const markersList = generateMarkers();
 
-  return { venues, setVenues, markersList };
+  const generateVenueDetails = () => {
+    return venues.map((venue) => {
+      return (
+        <div>
+          <h2>Venue Name:</h2>
+          <div>{venue.name}</div>
+        </div>
+      );
+    });
+  };
+
+  const venuesDetails = generateVenueDetails();
+
+  return { venues, setVenues, markersList, venuesDetails };
 }
 
 //venues is an array
