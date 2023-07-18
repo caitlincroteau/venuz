@@ -34,8 +34,9 @@ export default function useData() {
     return venues.map((venue) => {
       return (
         <div>
-          <h2>Venue Name:</h2>
-          <div>{venue.name}</div>
+          <div>Name: {venue.name}</div>
+          <div>Capacity: {venue.capacity}</div>
+          <div>Type: {venue.facility}</div>
         </div>
       );
     });
