@@ -1,9 +1,13 @@
+import { useState } from "react";
 import useData from "./useData.jsx";
 
 export default function Sidebar(props) {
+  const [activeVenue, setActiveVenue] = useState()
   const { venuesDetails } = useData();
 
-  console.log("venue details", venuesDetails)
+  // const showVenueDetails = () => {
+    
+  // }
 
   return (
     <>
@@ -11,7 +15,6 @@ export default function Sidebar(props) {
       <div> 
       {venuesDetails.map((venue) => {
         return (venue)
-
       })
      }
      </div>
