@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import useData from "./useData.jsx";
 import Venue from "./Venue.jsx";
+import { AppContext } from "../Context";
 
 export default function Sidebar(props) {
-  const [activeVenue, setActiveVenue] = useState();
+  const { activeMarker, setActiveMarker } = useContext(AppContext)
   const { venuesDetails } = useData();
+  // console.log(typeof activeMarker)
+  console.log(activeMarker)
 
   // const showVenueDetails = () => {
 
@@ -24,7 +27,8 @@ export default function Sidebar(props) {
   return (
     <>
       <h1>Sidebar</h1>
-      <Venue></Venue>
+      {activeMarker && (<div>name: {activeMarker.title}</div>)}
+      
     </>
   );
 }
