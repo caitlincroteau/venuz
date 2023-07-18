@@ -1,24 +1,30 @@
 import { useLoadScript } from "@react-google-maps/api";
-
+import { AppContext } from "../Context";
 import Map from "./Map";
 import Sidebar from "./Sidebar";
 import "../globals.css";
+import App from "../App";
+import { useState } from "react";
 
 export default function MapContainer(props) {
+  const [activeMarker, setActiveMarker] = useState(null);
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API,
   });
 
+
   if (!isLoaded) return <div>Loading ...</div>;
   return (
-    <div className="container">
-      <div className="sidebar">
-        <Sidebar />
+    <AppContext.Provider value={{ activeMarker, setActiveMarker }}>
+      <div className="container">
+        <div className="sidebar">
+          <Sidebar />
+        </div>
+        <div className="map">
+          <Map />
+        </div>
       </div>
-      <div className="map">
-        <Map />
-      </div>
-    </div>
+    </AppContext.Provider>
   );
 }
 
