@@ -9,7 +9,7 @@ import useData from "./useData";
 
 export default function MapContainer(props) {
   const [activeMarker, setActiveMarker] = useState(null);
-  const { venueDetails, markersList } = useData();
+  const { markersList, venues } = useData();
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API,
@@ -18,7 +18,7 @@ export default function MapContainer(props) {
 
   if (!isLoaded) return <div>Loading ...</div>;
   return (
-    <AppContext.Provider value={{ activeMarker, setActiveMarker, venueDetails, markersList }}>
+    <AppContext.Provider value={{ activeMarker, setActiveMarker, markersList,venues }}>
       <div className="container">
         <div className="sidebar">
           <Sidebar />

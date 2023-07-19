@@ -24,24 +24,25 @@ export default function useData() {
         <MarkerF
           title={venue.name}
           position={{ lat: venue.lat, lng: venue.lng }}
+          id={venue.id}
         />
       );
     });
   };
-
+  
   const markersList = generateMarkers();
 
-  const generateVenueDetails = () => {
-    return venues.map((venue) => {
-      return (
-        <Venue name={venue.name} capacity={venue.capacity} facility={venue.facility} key={venue.id}/>
-      );
-    });
-  };
+  // const generateVenueDetails = () => {
+  //   return venues.map((venue) => {
+  //     return (
+  //       <Venue name={venue.name} capacity={venue.capacity} facility={venue.facility} key={venue.id}/>
+  //     );
+  //   });
+  // };
 
-  const venueDetails = generateVenueDetails();
-
-  return { venues, setVenues, markersList, venueDetails };
+  // const venueDetails = generateVenueDetails();
+  
+  return { venues, markersList };
 }
 
 //venues is an array

@@ -69,6 +69,7 @@ export default function Map(props) {
                 lat: marker.props.position.lat,
                 lng: marker.props.position.lng,
               }}
+              id={marker.props.id}
               key={index}
               onClick={() => {
                 handleClick(marker.props);
