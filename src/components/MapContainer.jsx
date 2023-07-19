@@ -5,9 +5,12 @@ import Sidebar from "./Sidebar";
 import "../globals.css";
 import App from "../App";
 import { useState } from "react";
+import useData from "./useData";
 
 export default function MapContainer(props) {
   const [activeMarker, setActiveMarker] = useState(null);
+  const { venueDetails, markersList } = useData();
+
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API,
   });
@@ -15,7 +18,7 @@ export default function MapContainer(props) {
 
   if (!isLoaded) return <div>Loading ...</div>;
   return (
-    <AppContext.Provider value={{ activeMarker, setActiveMarker }}>
+    <AppContext.Provider value={{ activeMarker, setActiveMarker, venueDetails, markersList }}>
       <div className="container">
         <div className="sidebar">
           <Sidebar />

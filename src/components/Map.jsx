@@ -7,9 +7,9 @@ import { AppContext } from "../Context";
 
 export default function Map(props) {
   // const [activeMarker, setActiveMarker] = useState({});
-  const { activeMarker, setActiveMarker } = useContext(AppContext)
+  const { activeMarker, setActiveMarker, markersList } = useContext(AppContext)
   const [infoWindowVisibility, setInfoWindowVisibility] = useState(false);
-  const { venues, setVenues, markersList } = useData();
+  // const { venues, setVenues, markersList } = useData();
 
   const mapRef = useRef();
   // ensure map doesn't jump back to og center coordinates

@@ -2,8 +2,9 @@
 export default function Venue(props) {
   return (
     <div>
-      <ul>{props.name}</ul>
+      <h2>{props.name}</h2>
       <ul>{props.capacity}</ul>
+      <ul>{props.facility}</ul>
     </div>
   );
 }
