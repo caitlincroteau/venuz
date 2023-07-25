@@ -7,17 +7,12 @@ import {
   useEffect,
   useContext,
 } from "react";
-import useData from "./useData";
 import iconStar from "./images/google-map-marker-40x40.png";
 import { AppContext } from "../Context";
 
 export default function Map(props) {
-  const {
-    activeVenue,
-    setActiveVenue,
-    markersList,
-    venuesList,
-  } = useContext(AppContext);
+  const { activeVenue, setActiveVenue, markersList, venuesList } =
+    useContext(AppContext);
   const [infoWindowVisibility, setInfoWindowVisibility] = useState(false);
   const [infoWindowContent, setInfoWindowContent] = useState(null);
 
@@ -55,15 +50,16 @@ export default function Map(props) {
 
   const handleClick = (marker) => {
     setActiveVenue(venuesList[marker.id]);
+
     //centers map on clicked marker
     mapRef.current?.panTo(marker.position);
-    
+
     const lat = venuesList[marker.id].lat;
     const lng = venuesList[marker.id].lng;
-    const position = {lat, lng};
-    const name = venuesList[marker.id].name
+    const position = { lat, lng };
+    const name = venuesList[marker.id].name;
 
-    setInfoWindowContent({position, name});
+    setInfoWindowContent({ position, name });
     setInfoWindowVisibility(true);
   };
 
@@ -114,15 +110,6 @@ export default function Map(props) {
 
 ///watch this video for instructions!
 //https://www.youtube.com/watch?v=2po9_CIRW7I&t=556s&ab_channel=LeighHalliday
-
-//   <InfoWindowF position={activeMarker}>
-//   <div
-//     style={{backgroundColor: "pink"}}
-//     >
-//       <h2>{marker.props.title}</h2>
-//     </div>
-
-// </InfoWindowF>
 
 //https://stackoverflow.com/questions/62369859/google-maps-infowindow-reactjs
 //^^ this gives infor on having only ONE infobox open at a time
