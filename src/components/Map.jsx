@@ -53,7 +53,7 @@ export default function Map(props) {
 
   useEffect(() => {
     // console.log(activeMarker);
-  }, [activeMarker]);
+  }, [activeVenue]);
 
   const handleClick = (marker) => {
     // setActiveMarker(marker);
