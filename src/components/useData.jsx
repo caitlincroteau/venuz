@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { MarkerF } from "@react-google-maps/api";
-import Venue from "./Venue";
 
 export default function useData() {
   //gives array of all the venue objects in db
   const [venues, setVenues] = useState([]);
-  // console.log(venues);
 
   useEffect(() => {
     axios
@@ -42,17 +40,8 @@ export default function useData() {
 
   const venuesList = setVenuesById();
 
-  return { venues, markersList, venuesList };
+  return { markersList, venuesList };
 }
 
 //venues is an array
-
-// const generateVenueDetails = () => {
-//   return venues.map((venue) => {
-//     return (
-//       <Venue name={venue.name} capacity={venue.capacity} facility={venue.facility} key={venue.id}/>
-//     );
-//   });
-// };
-
-// const venueDetails = generateVenueDetails();
+//venuesList is an object
