@@ -1,15 +1,9 @@
-import { useState, useContext, useEffect } from "react";
-import useData from "./useData.jsx";
+import { useContext, useEffect } from "react";
 import Venue from "./Venue.jsx";
 import { AppContext } from "../Context";
 
 export default function Sidebar(props) {
-  const {
-    activeVenue,
-    setActiveVenue,
-    markersList,
-    venuesList,
-  } = useContext(AppContext);
+  const { activeVenue } = useContext(AppContext);
 
   useEffect(() => {
     console.log(activeVenue);
