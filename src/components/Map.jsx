@@ -1,15 +1,27 @@
 import { GoogleMap, MarkerF, InfoWindowF } from "@react-google-maps/api";
-import { useMemo, useState, useRef, useCallback, useEffect, useContext } from "react";
+import {
+  useMemo,
+  useState,
+  useRef,
+  useCallback,
+  useEffect,
+  useContext,
+} from "react";
 import useData from "./useData";
 import iconStar from "./images/google-map-marker-40x40.png";
 import { AppContext } from "../Context";
 
-
 export default function Map(props) {
-  // const [activeMarker, setActiveMarker] = useState({});
-  const { activeMarker, setActiveMarker, markersList } = useContext(AppContext)
+  const {
+    activeMarker,
+    setActiveMarker,
+    activeVenue,
+    setActiveVenue,
+    markersList,
+    venuesList,
+  } = useContext(AppContext);
   const [infoWindowVisibility, setInfoWindowVisibility] = useState(false);
-  // const { venues, setVenues, markersList } = useData();
+  const [infoWindowContent, setInfoWindowContent] = useState(null);
 
   const mapRef = useRef();
   // ensure map doesn't jump back to og center coordinates
@@ -44,9 +56,16 @@ export default function Map(props) {
   }, [activeMarker]);
 
   const handleClick = (marker) => {
-    setActiveMarker(marker);
+    // setActiveMarker(marker);
+    setActiveVenue(venuesList[marker.id]);
     //centers map on clicked marker
     mapRef.current?.panTo(marker.position);
+    const lat = venuesList[marker.id].lat;
+    const lng = venuesList[marker.id].lng;
+    const position = {lat, lng};
+    const name = venuesList[marker.id].name
+
+    setInfoWindowContent({position, name});
     setInfoWindowVisibility(true);
   };
 
@@ -55,43 +74,43 @@ export default function Map(props) {
   };
 
   return (
-      <GoogleMap
-        zoom={13}
-        center={center}
-        mapContainerClassName="map-container"
-        options={options}
-        onLoad={onLoad}
-      >
-        {markersList.map((marker, index) => {
-          return (
-            <MarkerF
-              position={{
-                lat: marker.props.position.lat,
-                lng: marker.props.position.lng,
-              }}
-              id={marker.props.id}
-              key={index}
-              onClick={() => {
-                handleClick(marker.props);
-              }}
-              icon={iconStar}
-              title={marker.props.title}
-            ></MarkerF>
-          );
-        })}
-        {infoWindowVisibility && (
-          <InfoWindowF
-            position={activeMarker.position}
-            onLoad={infoOnLoad}
-            onCloseClick={handleInfoClose}
-          >
-            <div>
-              <h4>{activeMarker.title}</h4>
-            </div>
-          </InfoWindowF>
-          //^this checks window visibility. if clicked on during handleClick function, this infoBox will appear
-        )}
-      </GoogleMap>
+    <GoogleMap
+      zoom={13}
+      center={center}
+      mapContainerClassName="map-container"
+      options={options}
+      onLoad={onLoad}
+    >
+      {markersList.map((marker, index) => {
+        return (
+          <MarkerF
+            position={{
+              lat: marker.props.position.lat,
+              lng: marker.props.position.lng,
+            }}
+            id={marker.props.id}
+            key={index}
+            onClick={() => {
+              handleClick(marker.props);
+            }}
+            icon={iconStar}
+            title={marker.props.title}
+          ></MarkerF>
+        );
+      })}
+      {infoWindowVisibility && (
+        <InfoWindowF
+          position={infoWindowContent.position}
+          onLoad={infoOnLoad}
+          onCloseClick={handleInfoClose}
+        >
+          <div>
+            <h4>{infoWindowContent.name}</h4>
+          </div>
+        </InfoWindowF>
+        //^this checks window visibility. if clicked on during handleClick function, this infoBox will appear
+      )}
+    </GoogleMap>
   );
 }
 
