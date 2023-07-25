@@ -3,7 +3,6 @@ import { AppContext } from "../Context";
 import Map from "./Map";
 import Sidebar from "./Sidebar";
 import "../globals.css";
-import App from "../App";
 import { useState } from "react";
 import useData from "./useData";
 
@@ -15,10 +14,11 @@ export default function MapContainer(props) {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API,
   });
 
-
   if (!isLoaded) return <div>Loading ...</div>;
   return (
-    <AppContext.Provider value={{ activeVenue, setActiveVenue, markersList, venuesList }}>
+    <AppContext.Provider
+      value={{ activeVenue, setActiveVenue, markersList, venuesList }}
+    >
       <div className="container">
         <div className="sidebar">
           <Sidebar />
@@ -30,10 +30,6 @@ export default function MapContainer(props) {
     </AppContext.Provider>
   );
 }
-
-// <MarkerF
-//       position={{ lat: 48.42460692730271, lng: -123.35338691883109 }}
-//     />
 
 //Leigh Halliday and google maps platform youtube channel, 'How to load Maps JavaScript API in React'
 // instructions for this componenet with @react-google-maps/api package:
