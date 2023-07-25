@@ -41,11 +41,11 @@ export default function Map(props) {
 
   const onLoad = useCallback((map) => (mapRef.current = map), []);
   const infoOnLoad = (infoWindow) => {
-    console.log("infoWindow: ", infoWindow);
+    // console.log("infoWindow: ", infoWindow);
   };
 
   useEffect(() => {
-    console.log(activeVenue);
+    // console.log(activeVenue);
   }, [activeVenue]);
 
   const handleClick = (marker) => {

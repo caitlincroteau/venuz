@@ -6,7 +6,7 @@ export default function Sidebar(props) {
   const { activeVenue } = useContext(AppContext);
 
   useEffect(() => {
-    console.log(activeVenue);
+    // console.log(activeVenue);
   }, [activeVenue]);
 
   return (
