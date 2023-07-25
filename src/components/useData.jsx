@@ -29,35 +29,30 @@ export default function useData() {
       );
     });
   };
-  
+
   const markersList = generateMarkers();
 
   const setVenuesById = () => {
-    let byId = {}
-    for(let venue of venues){
+    let byId = {};
+    for (let venue of venues) {
       byId[venue._id] = venue;
     }
     return byId;
-  }
+  };
 
-  const venuesList = setVenuesById()
-
-
-// console.log(venuesList())
-// console.log(venues)
+  const venuesList = setVenuesById();
 
   return { venues, markersList, venuesList };
 }
 
 //venues is an array
 
+// const generateVenueDetails = () => {
+//   return venues.map((venue) => {
+//     return (
+//       <Venue name={venue.name} capacity={venue.capacity} facility={venue.facility} key={venue.id}/>
+//     );
+//   });
+// };
 
-  // const generateVenueDetails = () => {
-  //   return venues.map((venue) => {
-  //     return (
-  //       <Venue name={venue.name} capacity={venue.capacity} facility={venue.facility} key={venue.id}/>
-  //     );
-  //   });
-  // };
-
-  // const venueDetails = generateVenueDetails();
+// const venueDetails = generateVenueDetails();
