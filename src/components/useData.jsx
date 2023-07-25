@@ -24,13 +24,33 @@ export default function useData() {
         <MarkerF
           title={venue.name}
           position={{ lat: venue.lat, lng: venue.lng }}
-          id={venue.id}
+          id={venue._id}
         />
       );
     });
   };
   
   const markersList = generateMarkers();
+
+  const setVenuesById = () => {
+    let byId = {}
+    for(let venue of venues){
+      byId[venue._id] = venue;
+    }
+    return byId;
+  }
+
+  const venuesList = setVenuesById()
+
+
+// console.log(venuesList())
+// console.log(venues)
+
+  return { venues, markersList, venuesList };
+}
+
+//venues is an array
+
 
   // const generateVenueDetails = () => {
   //   return venues.map((venue) => {
@@ -41,8 +61,3 @@ export default function useData() {
   // };
 
   // const venueDetails = generateVenueDetails();
-  
-  return { venues, markersList };
-}
-
-//venues is an array
