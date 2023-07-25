@@ -13,8 +13,6 @@ import { AppContext } from "../Context";
 
 export default function Map(props) {
   const {
-    activeMarker,
-    setActiveMarker,
     activeVenue,
     setActiveVenue,
     markersList,
@@ -52,14 +50,14 @@ export default function Map(props) {
   };
 
   useEffect(() => {
-    // console.log(activeMarker);
+    console.log(activeVenue);
   }, [activeVenue]);
 
   const handleClick = (marker) => {
-    // setActiveMarker(marker);
     setActiveVenue(venuesList[marker.id]);
     //centers map on clicked marker
     mapRef.current?.panTo(marker.position);
+    
     const lat = venuesList[marker.id].lat;
     const lng = venuesList[marker.id].lng;
     const position = {lat, lng};

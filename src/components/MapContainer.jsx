@@ -8,7 +8,6 @@ import { useState } from "react";
 import useData from "./useData";
 
 export default function MapContainer(props) {
-  const [activeMarker, setActiveMarker] = useState(null);
   const [activeVenue, setActiveVenue] = useState(null);
   const { markersList, venuesList } = useData();
 
@@ -19,7 +18,7 @@ export default function MapContainer(props) {
 
   if (!isLoaded) return <div>Loading ...</div>;
   return (
-    <AppContext.Provider value={{ activeMarker, setActiveMarker, activeVenue, setActiveVenue, markersList, venuesList }}>
+    <AppContext.Provider value={{ activeVenue, setActiveVenue, markersList, venuesList }}>
       <div className="container">
         <div className="sidebar">
           <Sidebar />

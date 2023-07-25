@@ -5,8 +5,6 @@ import { AppContext } from "../Context";
 
 export default function Sidebar(props) {
   const {
-    activeMarker,
-    setActiveMarker,
     activeVenue,
     setActiveVenue,
     markersList,
